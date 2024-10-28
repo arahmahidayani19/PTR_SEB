@@ -460,10 +460,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 1.1.0
+        <b>Version</b> 1.1.0
     </div>
-    <strong>&copy; AdminLTE <a href="#">PT.Sanwa Engineering Batam 2024</a>.</strong> All rights reserved.
-  </footer>
+    <strong>AdminLTE &copy; <a href="#">PT. Sanwa Engineering Batam 2024</a>.</strong> All rights reserved.
+    <br>
+    <small>Developed by <a href="#">Arahma Hidayani</a>.</small>
+</footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
