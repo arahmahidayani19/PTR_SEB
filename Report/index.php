@@ -66,10 +66,6 @@
           </form>
         </div>
       </li>
-
-      <!-- Messages Dropdown Menu -->
-      
-      <!-- Notifications Dropdown Menu -->
      
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -265,7 +261,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-        <b>Version</b> 1.1.0
+        <b>Version</b> 1.0.0
     </div>
     <strong>AdminLTE &copy; <a href="#">PT. Sanwa Engineering Batam 2024</a>.</strong> All rights reserved.
     <br>
@@ -306,8 +302,7 @@
 <script src="../plugins/dropzone/min/dropzone.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+
 <script>
     $(document).ready(function () {
         // Menangani perubahan pada dropdown Date Range

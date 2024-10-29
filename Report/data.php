@@ -153,7 +153,63 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+              <h3 class="card-title">
+    <?php
+    // Initialize a title variable
+    $reportTitle = 'DataTable with default features'; // Default title
+
+    // Set the title based on the date range selected by the user
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $dateRange = $_POST['dateRange'] ?? '';
+        $noTRF = $_POST['noTRF'] ?? '';
+        $partNo = $_POST['partno'] ?? '';
+        $taskStatus = $_POST['task'] ?? '';
+
+        switch ($dateRange) {
+            case 'thisWeek':
+                $reportTitle = 'Report for This Week';
+                break;
+            case 'lastWeek':
+                $reportTitle = 'Report for Last Week';
+                break;
+            case 'thisMonth':
+                $reportTitle = 'Report for This Month';
+                break;
+            case 'lastMonth':
+                $reportTitle = 'Report for Last Month';
+                break;
+            case 'customDate':
+                $startDate = $_POST['startDate'] ?? '';
+                $endDate = $_POST['endDate'] ?? '';
+                $reportTitle = 'Report from ' . htmlspecialchars($startDate) . ' to ' . htmlspecialchars($endDate);
+                break;
+            default:
+                $reportTitle = 'DataTable with default features'; // Reset to default if invalid
+                break;
+        }
+
+        // Append additional filters to the title
+        $filters = [];
+        if ($noTRF !== '') {
+            $filters[] = 'No TRF: ' . htmlspecialchars($noTRF);
+        }
+        if ($partNo !== '') {
+            $filters[] = 'Part No: ' . htmlspecialchars($partNo);
+        }
+        if ($taskStatus !== '') {
+            $filters[] = 'Task Status: ' . htmlspecialchars($taskStatus);
+        }
+
+        // If there are filters, append them to the title
+        if (!empty($filters)) {
+            $reportTitle .= ' (' . implode(', ', $filters) . ')';
+        }
+    }
+
+    // Output the title
+    echo htmlspecialchars($reportTitle);
+    ?>
+</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -460,7 +516,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-        <b>Version</b> 1.1.0
+        <b>Version</b> 1.0.0
     </div>
     <strong>AdminLTE &copy; <a href="#">PT. Sanwa Engineering Batam 2024</a>.</strong> All rights reserved.
     <br>
@@ -494,8 +550,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+
 <!-- Page specific script -->
 <script>
   $(function () {
